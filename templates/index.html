@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Elevator Control System</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='elevator.css') }}">
+</head>
+<body>
+<h2>Elevator Control System</h2>
+
+<div>
+  <label>Select Elevator:</label>
+  <select id="selectElevator">
+    {% for eid, elevator in elevators.items() %}
+      <option value="{{ eid }}">{{ eid }} - Serves {{ elevator.floors }} floors</option>
+    {% endfor %}
+  </select>
+</div>
+
+<div id="buttonPanel" class="button-panel"></div>
+
+<div id="elevatorDisplay">
+  <div id="elevatorShaft">
+    <div id="elevatorCar"></div>
+  </div>
+  <div id="doorStatus">Door Closed</div>
+</div>
+
+<div>
+  <h3>State Transitions:</h3>
+  <textarea id="stateLog" rows="10" cols="50" readonly></textarea>
+</div>
+
+<script src="{{ url_for('static', filename='elevator.js') }}"></script>
+</body>
+</html>
